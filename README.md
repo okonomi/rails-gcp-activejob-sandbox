@@ -26,4 +26,4 @@ $ bundle exec activejob-google_cloud_pubsub-worker --keyfile=config/gcp_credenti
 
 ## Demo
 
-![](./demo.gif)
+[![](./demo.gif)](./demo.gif)
