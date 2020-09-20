@@ -1,5 +1,7 @@
 # Rails GCP ActiveJob Sandbox
 
+## Use
+
 Enqueue:
 
 ```irb
@@ -22,6 +24,6 @@ Run worker:
 $ bundle exec activejob-google_cloud_pubsub-worker --keyfile=config/gcp_credentials.json
 ```
 
-Demo:
+## Demo
 
-![](./demo.mp4)
+![](./demo.gif)
