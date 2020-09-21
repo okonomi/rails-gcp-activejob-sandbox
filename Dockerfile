@@ -1,11 +1,11 @@
 FROM ruby:2.7.1-slim-buster as builder
 
-WORKDIR /app
+ENV BUNDLE_FROZEN true
+ENV BUNDLE_JOBS 4
+ENV BUNDLE_PATH /app/vendor/bundle
+ENV BUNDLE_WITHOUT development:test
 
-RUN bundle config set frozen true \
- && bundle config set jobs 4 \
- && bundle config set path vendor/bundle \
- && bundle config set without development test
+WORKDIR /app
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends build-essential libsqlite3-dev curl gnupg \
@@ -27,13 +27,10 @@ ENV PORT 3000
 ENV RAILS_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
 ENV RAILS_LOG_TO_STDOUT true
+ENV BUNDLE_PATH /app/vendor/bundle
+ENV BUNDLE_WITHOUT development:test
 
 WORKDIR /app
-
-RUN bundle config set frozen true \
- && bundle config set jobs 4 \
- && bundle config set path vendor/bundle \
- && bundle config set without development test
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends libsqlite3-dev \
