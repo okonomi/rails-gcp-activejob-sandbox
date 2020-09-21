@@ -1,5 +1,7 @@
 class HelloController < ApplicationController
   def index
-    render plain: "Hello, #{params[:name]}"
+    HelloJob.perform_later params[:name]
+
+    render plain: "Enqueued!"
   end
 end
