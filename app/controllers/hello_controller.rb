@@ -15,7 +15,7 @@ class HelloController < ApplicationController
     message = JSON.parse(data)
     message['job_class'].constantize.public_send(:perform_now, *message['arguments'])
 
-    render plain: "Executed!"
+    render plain: "Executed!", status: :created
   rescue e
     p e
   end
