@@ -260,7 +260,6 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
-  google-cloud-pubsub
   jbuilder (~> 2.7)
   listen (~> 3.2)
   puma (~> 4.1)
