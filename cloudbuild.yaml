@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/kaniko-project/executor:latest'
+    args:
+      - --destination=gcr.io/$PROJECT_ID/rails-gcp-activejob-sandbox
+      - --cache=true
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: ['run', 'deploy', 'webapp', '--image', 'gcr.io/$PROJECT_ID/rails-gcp-activejob-sandbox', '--region', 'asia-northeast2', '--platform', 'managed', '--allow-unauthenticated']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: ['run', 'deploy', 'worker', '--image', 'gcr.io/$PROJECT_ID/rails-gcp-activejob-sandbox', '--region', 'asia-northeast2', '--platform', 'managed', '--no-allow-unauthenticated']
